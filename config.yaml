@@ -1,0 +1,51 @@
+nick_cage:
+  moods: ['oscar','weird','comedy','thriller','crime','drama']
+  movies:
+    "Adaptation":
+      mood: ['oscar','weird','comedy']
+      image: "https://m.media-amazon.com/images/M/MV5BMmQ1MWMxZjEtNmNmYi00ZGFhLWExZDItODcwNzlmZjg0YzNlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    "Bringing out the Dead":
+      mood: ['drama']
+      image: "https://m.media-amazon.com/images/M/MV5BNGVjYjU5YzItYTVmMS00ZTUwLTkzMDgtYzI5MGI2MmFkZmQ0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    "Leaving Las Vegas":
+      mood: ['drama', 'oscar']
+      image: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p17161_p_v8_ah.jpg"
+    "Raising Arizona":
+      mood: ['comedy']
+      image: "https://m.media-amazon.com/images/I/81FTrY0BT3L._SY606_.jpg"
+    "The Unbearable Weight of Massive Talent":
+      mood: ['comedy']
+      image: "https://m.media-amazon.com/images/I/91kffE9V8fL._AC_UF1000,1000_QL80_.jpg"
+    "Vampire's Kiss":
+      mood: ['comedy', 'weird']
+      image: "https://m.media-amazon.com/images/M/MV5BMTM1MDAyMDYxMV5BMl5BanBnXkFtZTcwNDQwMzc3NA@@._V1_FMjpg_UX1000_.jpg"
+    "Con Air":
+      mood: ['thriller']
+      image: "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p19439_p_v8_av.jpg"
+    "Face/Off":
+      mood: ['thriller']
+      image: "https://m.media-amazon.com/images/M/MV5BOGQyOWNmYTgtZWY0NS00NzhjLTg3NmMtMzcwYzQ2OTA2OTJkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    "Gone in 60 seconds":
+      mood: ['thriller']
+      image: "https://m.media-amazon.com/images/M/MV5BMTIwMzExNDEwN15BMl5BanBnXkFtZTYwODMxMzg2._V1_FMjpg_UX1000_.jpg"
+    "Bad Lieutenant: Port of New Orleans":
+      mood: ['crime']
+      image: "https://images.squarespace-cdn.com/content/v1/583c906ebe659429d1106265/f4e1013b-7fd8-4986-8e5f-92206a8b1e19/51SNRejtoNL._RI_SX300_.jpg"
+    "Matchstick Men":
+      mood: ['crime']
+      image: "https://m.media-amazon.com/images/M/MV5BMjA3NjMyNjIyMF5BMl5BanBnXkFtZTYwOTgzMDI3._V1_.jpg"
+    "Lord of War":
+      mood: ['crime']
+      image: "https://d3tvwjfge35btc.cloudfront.net/Assets/66/495/L_p1019749566.jpg"
+    "National Treasure":
+      mood: ['mission']
+      image: "https://images.moviesanywhere.com/7e2320f8ed4e312ffe34dc770a733314/bfe04b95-9f63-4ef8-94d6-ad6d791eb7da.jpg"
+    "National Treasure 2":
+      mood: ['mission']
+      image: "https://lumiere-a.akamaihd.net/v1/images/p_nationaltreasure2bookofsecrets_19895_8713f371.jpeg"
+    "Mandy":
+      mood: ['weird', 'horror']
+      image: "https://upload.wikimedia.org/wikipedia/en/9/9a/Mandy_%282018_film%29.png"
+    "Pig":
+      mood: ['weird']
+      image: "https://upload.wikimedia.org/wikipedia/en/e/e2/Pig_poster.jpeg"
