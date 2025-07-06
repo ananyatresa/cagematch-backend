@@ -10,7 +10,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React frontend
+    allow_origins=["http://localhost:3000", "https://cagematch-frontend-sage.vercel.app"],  # React frontend
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -28,6 +28,15 @@ def read_config():
     with open(file_path,'r') as file:
         config = yaml.safe_load(file)
     return config
+
+# For creating tables and inserting seed data - Run once initially for setting up db, tables and data
+# from database import Base, engine
+# from db_models import user_model, movie_model
+# from seed_data import seed_movies
+#
+# Base.metadata.create_all(bind=engine)
+# seed_movies()
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
