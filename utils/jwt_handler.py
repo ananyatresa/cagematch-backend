@@ -6,7 +6,7 @@ import os
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 1 day
+ACCESS_TOKEN_EXPIRE_MINUTES = 15
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
@@ -24,5 +24,5 @@ def verify_token(token: str = Depends(oauth2_scheme)):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         return payload  # Contains user_id, username, etc.
-    except JWTError:
-        raise HTTPException(status_code=401, detail="Invalid or expired token")
+    except Exception as e:
+        raise HTTPException(status_code=401, detail=f"Invalid or expired token: {str(e)}")

@@ -30,9 +30,12 @@ def read_config():
     return config
 
 # For creating tables and inserting seed data - Run once initially for setting up db, tables and data
-# from database import Base, engine
-# from db_models import user_model, movie_model
+from database import Base, engine
+from db_models import user_model, movie_model
 # from seed_data import seed_movies
+# from seed_trailer_tmbd_api import get_movie_trailers
+# Base.metadata.create_all(bind=engine)
+# get_movie_trailers()
 #
 # Base.metadata.create_all(bind=engine)
 # seed_movies()

@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from fastapi import status
 
 from database import get_db
+from model.movie_req_res import MovieDetailsRequest
 from model.user_req_res import SignUpRequest, LoginRequest
 from service.movie_service import MovieService
 from service.user_service import UserService
@@ -29,3 +30,9 @@ def login(req: LoginRequest, db: Session = Depends(get_db)):
 def get_movies_by_genre(user=Depends(verify_token), db: Session = Depends(get_db)):
     service = MovieService(config=config, db=db)
     return service.get_movies_by_genre()
+
+
+@router.post("/get_movie_details")
+def get_movie_details(mov_req: MovieDetailsRequest, user=Depends(verify_token), db: Session = Depends(get_db)):
+    service = MovieService(config=config, db=db)
+    return service.get_movie_details(mov_req)
