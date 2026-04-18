@@ -49,3 +49,9 @@ def like_movie(request: Request, like_req: LikeRequest):
 def watchlist_movie(request: Request, watchlist_req: WatchListRequest):
     token = verify_bearer_token(request.headers)
     return user_svc.add_to_watchlist(watchlist_req, token)
+
+
+@router.get("/get_user_watchlist")
+def get_user_watchlist(request: Request):
+    token = verify_bearer_token(request.headers)
+    return movie_svc.get_user_watchlist(token)

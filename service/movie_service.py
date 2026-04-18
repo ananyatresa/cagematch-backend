@@ -161,3 +161,44 @@ class MovieService:
         cast_data = movie.get("credits", {}).get("cast", [])
         cast = [c["name"] for c in cast_data[:5]]
         return cast
+
+    def get_user_watchlist(self, token):
+        try:
+            user_id = token["uid"]
+            user_data = db.collection("users").document(user_id).get().to_dict() or {}
+            watchlist_ids = user_data.get("watchlist", [])
+
+            movies = []
+            for movie_id in watchlist_ids:
+                cached = self.movie_details_cache.get(movie_id)
+                if cached and (time.time() - cached["time"]) < self.cache_ttl:
+                    detail = cached["data"]
+                    movies.append(MovieItem(
+                        movie_id=detail.movie_id,
+                        title=detail.title,
+                        release_date=detail.release_date,
+                        score=detail.score,
+                        img_url=detail.img_url,
+                        duration=detail.duration,
+                    ))
+                    continue
+
+                movie_url = f"{self.tmdb_base_url}/movie/{movie_id}?api_key={self.tmdb_api_key}"
+                response = requests.get(movie_url)
+                if response.status_code != 200:
+                    continue
+                m = response.json()
+                runtime = m.get("runtime", 0)
+                movies.append(MovieItem(
+                    movie_id=m["id"],
+                    title=m.get("original_title", "N/A"),
+                    release_date=m.get("release_date", "Unknown"),
+                    score=m.get("popularity", 0),
+                    img_url=f"https://image.tmdb.org/t/p/w500{m.get('poster_path', '')}",
+                    duration=f"{runtime} mins",
+                ))
+
+            return {"result": movies}
+        except Exception as e:
+            self.logger.error(f"get_user_watchlist failed: {e}")
+            raise HTTPException(status_code=500, detail="Failed to fetch watchlist")
