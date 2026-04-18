@@ -1,28 +1,16 @@
-from fastapi import Depends, HTTPException
-from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
-from datetime import datetime, timedelta
-import os
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 15
-
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
+from fastapi import HTTPException, status
+from firebase_admin import auth as firebase_auth
 
 
-def create_access_token(data, expires_delta=None):
-    to_encode = data.copy()
-    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
-    to_encode.update({"exp": expire})
-
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
-
-
-def verify_token(token: str = Depends(oauth2_scheme)):
+def verify_bearer_token(headers):
+    """ Verifies Firebase ID token and returns decoded claims if valid. """
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        return payload  # Contains user_id, username, etc.
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=f"Invalid or expired token: {str(e)}")
+        auth_header = headers.get("authorization") or headers.get("Authorization")
+        id_token = auth_header.split()[1]
+        decoded_token = firebase_auth.verify_id_token(id_token, check_revoked=True)
+        return decoded_token
+    except Exception:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token expired/invalid. Please re-authenticate."
+        )

@@ -1,8 +1,8 @@
 import requests
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from database import SessionLocal
+from db_utils.database import SessionLocal
 
 TMDB_API_KEY = ""
 TMDB_BASE_URL = "https://api.themoviedb.org/3"

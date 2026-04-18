@@ -1,0 +1,11 @@
+timezones:
+  Asia/Kolkata: "IN"
+  Asia/Dubai: "AE"
+  America/Toronto: "CA"
+  America/Vancouver: "CA"
+  America/New_York: "US"
+  America/Los_Angeles: "US"
+  Europe/London: "GB"
+  Europe/Paris: "FR"
+  Asia/Tokyo: "JP"
+  Australia/Sydney: "AU"

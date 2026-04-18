@@ -1,25 +1,14 @@
-from typing import Optional
-
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 
 
 class SignUpRequest(BaseModel):
-    email: EmailStr
     username: str
-    password: str
 
+class LikeRequest(BaseModel):
+    movie_id: int
+    is_liked: bool
+    is_disliked: bool
 
-class SignUpResponse(BaseModel):
-    message: str
-    user_id: str
-
-
-class LoginRequest(BaseModel):
-    email: EmailStr
-    password: str
-
-
-class LoginResponse(BaseModel):
-    access_token: str
-    token_type: str
-
+class WatchListRequest(BaseModel):
+    movie_id: int
+    watchlist_toggle: bool

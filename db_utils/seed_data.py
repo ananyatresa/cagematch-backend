@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
-from database import SessionLocal
-from db_models.user_model import User
-from db_models.movie_model import Movie
+from db_utils.database import SessionLocal
+from db_utils.movie_model import Movie
 import datetime
 
 
